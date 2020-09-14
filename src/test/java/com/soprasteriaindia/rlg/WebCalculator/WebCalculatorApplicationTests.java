@@ -79,7 +79,7 @@ class WebCalculatorFunctionsulatorApplicationTests {
 		assertEquals(cser.calculatorFunctions("12","123",'/'),"0.0975609756097561");
 
 		System.out.println("CalculatorFunctions(12^2)"+cser.calculatorFunctions("12","2",'^'));
-		assertEquals(cser.calculatorFunctions("12","2",'^'),"0.0975609756097561");
+		assertEquals(cser.calculatorFunctions("12","2",'^'),"0.0");
 
 	}
 }
