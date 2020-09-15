@@ -15,6 +15,10 @@ public class WebCalculatorController {
 	@Autowired
 	WebCalculatorService wCS;
 	
+	public WebCalculatorController(WebCalculatorService wcs){
+		this.wCS = wcs;
+	}
+	
 	@RequestMapping(value="/home", method = RequestMethod.GET)
     public String showHomePage(ModelMap model) {
 		return "home";
