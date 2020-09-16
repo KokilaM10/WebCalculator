@@ -62,7 +62,7 @@ class WebCalculatorApplicationServiceTest {
 		assertEquals("111.0",csertest.calculatorFunctions("123","12",'-'));
 
 		System.out.println("calculatorFunctions(123-123)"+"0.0");
-		assertEquals("0.0",csertest.calculatorFunctions("123","123",'-'),);
+		assertEquals("0.0",csertest.calculatorFunctions("123","123",'-'));
 
 		System.out.println("calculatorFunctions(12*123)"+"1476.0");
 		assertEquals("1476.0",csertest.calculatorFunctions("12","123",'*'));
