@@ -17,8 +17,8 @@ public class WebCalculatorService {
     	}
     }
     
-    public boolean validateOper(char Oper) {
-    	switch(Oper) {
+    public boolean validateOper(char oper) {
+    	switch(oper) {
     	case '+':
     	case '-':
     	case '*':
@@ -47,11 +47,8 @@ public class WebCalculatorService {
     		case '/':
     			res = dnum1 / dnum2;
     			break;
+    		default:
     	}
-//    	System.out.println("dnum1="+dnum1);
-//    	System.out.println("dnum2="+dnum2);
-//    	System.out.println("res="+res);
-//    	System.out.println("<=====>");
         return Double.toString(res);
     }
 

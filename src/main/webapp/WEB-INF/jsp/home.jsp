@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang=uk-in>
 <!-- Simple Web Calculator page -->
 <head>
 <meta charset="ISO-8859-1">
@@ -10,7 +10,7 @@
 <body>
 <h1>Simple Arithmetic Calculator</h1>
     <form id="calcform" method="post">
-    	<table>
+    	<table role="presentation">
     		<tr>
     			<td>Number 1 :</td>
     			<td>
@@ -26,7 +26,7 @@
     		<tr>
     			<td>Operation :</td>
     			<td>
-    				<select id="sel" name="operation" value="${operation}" required>
+    				<select id="sel" name="operation" required>
         				<option value="+"> + </option>
         				<option value="-"> - </option>
         				<option value="*"> x </option>
@@ -47,7 +47,7 @@
     		<tr>
     			<td>Result :</td>
     			<td>
-    				<input type="text" id="ires" name="result" maxlength=15 style="text-align:right;" value="${result}" readonly/>
+    				<input type="text" id="ires" name="result" maxlength=15 style="text-align:right;" value="${rresult}" readonly/>
     			</td>
     		</tr>
       		<tr>
@@ -57,7 +57,7 @@
     			</td>
     		</tr>
     		<tr>
-    			<td colspan=5><div id="eMes"><font color="red">${eMsg}</font></div></td>
+    			<td colspan=5><div id="eMes" style="color: red;">${eMsg}</div></td>
     		</tr>
     	</table>
     </form>
