@@ -1,4 +1,4 @@
-package com.soprasteriaindia.rlg.WebCalculator;
+package com.soprasteria.webcalculator.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -20,11 +20,18 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.soprasteriaindia.rlg.WebCalculator.controller.WebCalculatorController;
-import com.soprasteriaindia.rlg.WebCalculator.service.WebCalculatorService;
+import com.soprasteria.webcalculator.service.WebCalculatorService;
+import com.soprasteria.webcalculator.util.ApplicationConstants;
 
+/**
+ * 
+ * This is the test class for the controller class.
+ * 
+ * @author soprasteria
+ *
+ */
 @SpringBootTest
-class WebCalculatorApplicationControllerTest {
+class WebCalculatorControllerTest {
 
 	private MockMvc mockMvc;
 	@Autowired
@@ -42,7 +49,7 @@ class WebCalculatorApplicationControllerTest {
     }
     
 	@BeforeEach
-    void configureSystemUnderTest() {
+    void setup() {
  
         WebCalculatorController testedController = new WebCalculatorController(cser);
         this.mockMvc = MockMvcBuilders
@@ -53,79 +60,76 @@ class WebCalculatorApplicationControllerTest {
     
 	@DisplayName("Testing showWebCalculatorPage GET function in controller")
  	@Test
-	void showWebCalculatorPageTest() throws Exception {
+	void testshowWebCalculatorPageGET() throws Exception {
         this.mockMvc.perform(get("/home"))
         	.andExpect(status().isOk())
-        	.andExpect(forwardedUrl("/WEB-INF/jsp/home.jsp"))
-        	.andExpect(view().name("home"))
+        	.andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
+        	.andExpect(view().name(ApplicationConstants.HOME))
         	.andDo(MockMvcResultHandlers.print())
         	.andReturn();
 	}
 
 	@DisplayName("01 Testing showWebCalculatorResultPage POST function in controller")
  	@Test
-	void showWebCalculatorResultPageTest01() throws Exception {
+	void testshowWebCalculatorResultPageVALIDRESULT() throws Exception {
         this.mockMvc.perform(post("/home")
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                    .param("num1","100")
-                    .param("num2","200")
-                    .param("operation", "+")
-                    .param("result",""))
+                    .param(ApplicationConstants.NUMBER1,"100")
+                    .param(ApplicationConstants.NUMBER2,"200")
+                    .param(ApplicationConstants.OPERATION, "+")
+                    .param(ApplicationConstants.PARAM_RESULT,""))
                     .andExpect(status().isOk())
-                    .andExpect(view().name("home"))
-                    .andExpect(forwardedUrl("/WEB-INF/jsp/home.jsp"))
-                    .andExpect(model().attributeExists("rresult"))
-                    .andExpect(model().attribute("rresult","300.0"))
-                    .andExpect(model().attribute("eMsg",""))
+                    .andExpect(view().name(ApplicationConstants.HOME))
+                    .andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
+                    .andExpect(model().attributeExists(ApplicationConstants.RESULT))
+                    .andExpect(model().attribute(ApplicationConstants.RESULT,"300.0"))
+                    .andExpect(model().attribute(ApplicationConstants.ERROR_MESSAGE,""))
                     .andDo(MockMvcResultHandlers.print());
 	}
 
 	@DisplayName("02 Testing showWebCalculatorResultPage POST function in controller")
  	@Test
-	void showWebCalculatorResultPageTest02() throws Exception {
-        System.out.println("second POST");
+	void testshowWebCalculatorResultPageInvalidNum1and2() throws Exception {
         this.mockMvc.perform(post("/home")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("num1","100a")
-                .param("num2" , "200a")
-                .param("operation", "+")
-                .param("result",""))
+                .param(ApplicationConstants.NUMBER1,"100a")
+                .param(ApplicationConstants.NUMBER2 , "200a")
+                .param(ApplicationConstants.OPERATION, "+")
+                .param(ApplicationConstants.PARAM_RESULT,""))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/home.jsp"))
-                .andExpect(model().attribute("eMsg","Invalid Number1 & 2"))
+                .andExpect(view().name(ApplicationConstants.HOME))
+                .andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
+                .andExpect(model().attribute(ApplicationConstants.ERROR_MESSAGE,"Invalid Number1 & 2"))
                 .andDo(MockMvcResultHandlers.print());
 	}
 	@DisplayName("03 Testing showWebCalculatorResultPage POST function in controller")
  	@Test
-	void showWebCalculatorResultPageTest03() throws Exception {
-        System.out.println("second POST");
+	void testshowWebCalculatorResultPageInvalidNum1() throws Exception {
         this.mockMvc.perform(post("/home")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("num1","100a")
-                .param("num2" , "200")
-                .param("operation", "+")
-                .param("result",""))
+                .param(ApplicationConstants.NUMBER1,"100a")
+                .param(ApplicationConstants.NUMBER2 , "200")
+                .param(ApplicationConstants.OPERATION, "+")
+                .param(ApplicationConstants.PARAM_RESULT,""))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/home.jsp"))
-                .andExpect(model().attribute("eMsg","Invalid Number1"))
+                .andExpect(view().name(ApplicationConstants.HOME))
+                .andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
+                .andExpect(model().attribute(ApplicationConstants.ERROR_MESSAGE,"Invalid Number1"))
                 .andDo(MockMvcResultHandlers.print());
 	}
 	@DisplayName("04 Testing showWebCalculatorResultPage POST function in controller")
  	@Test
-	void showWebCalculatorResultPageTest04() throws Exception {
-        System.out.println("second POST");
+	void testshowWebCalculatorResultPageInvalidNum2() throws Exception {
         this.mockMvc.perform(post("/home")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                .param("num1","100")
-                .param("num2" , "200a")
-                .param("operation", "+")
-                .param("result",""))
+                .param(ApplicationConstants.NUMBER1,"100")
+                .param(ApplicationConstants.NUMBER2 , "200a")
+                .param(ApplicationConstants.OPERATION, "+")
+                .param(ApplicationConstants.PARAM_RESULT,""))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/home.jsp"))
-                .andExpect(model().attribute("eMsg","Invalid Number2"))
+                .andExpect(view().name(ApplicationConstants.HOME))
+                .andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
+                .andExpect(model().attribute(ApplicationConstants.ERROR_MESSAGE,"Invalid Number2"))
                 .andDo(MockMvcResultHandlers.print());
 	}
 }
