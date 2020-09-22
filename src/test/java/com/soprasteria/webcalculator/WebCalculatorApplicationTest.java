@@ -7,12 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class WebCalculatorApplicationTest {
 	
 	/*
-	 * This method will check if the main class loads properly.
-	 * 
-	 */
+	 * Testing classes in Spring Boot
+	 * Load context via Spring Boot
+	 */	
 	@Test
 	public void contextLoads() {
-		throw new UnsupportedOperationException();
+		/* Test that the context successfully loads 
+		 * (the method can be empty -> the test will fail if the context cannot be loaded)
+		 */
 	}
 
 }

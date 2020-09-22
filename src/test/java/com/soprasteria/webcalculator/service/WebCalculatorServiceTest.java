@@ -42,14 +42,14 @@ class WebCalculatorServiceTest {
 	@Test
 	@DisplayName("Test cases for calculatorFunctions function in service")
 	void calculatorFunctionsTest() {
-		assertEquals("135.0",csertest.calculatorFunctions("12","123",'+'));
-		assertEquals("-111.0",csertest.calculatorFunctions("12","123",'-'));
-		assertEquals("111.0",csertest.calculatorFunctions("123","12",'-'));
-		assertEquals("0.0",csertest.calculatorFunctions("123","123",'-'));
-		assertEquals("1476.0",csertest.calculatorFunctions("12","123",'*'));
-		assertEquals("3600.0",csertest.calculatorFunctions("120","30",'*'));
-		assertEquals("11.0",csertest.calculatorFunctions("121","11",'/'));
-		assertEquals("0.0975609756097561",csertest.calculatorFunctions("12","123",'/'));
-		assertEquals("0.0",csertest.calculatorFunctions("12","2",'^'));
+		assertEquals("135.00",csertest.calculatorFunctions("12","123",'+'));
+		assertEquals("-111.00",csertest.calculatorFunctions("12","123",'-'));
+		assertEquals("111.00",csertest.calculatorFunctions("123","12",'-'));
+		assertEquals("0.00",csertest.calculatorFunctions("123","123",'-'));
+		assertEquals("1476.00",csertest.calculatorFunctions("12","123",'*'));
+		assertEquals("3600.00",csertest.calculatorFunctions("120","30",'*'));
+		assertEquals("11.00",csertest.calculatorFunctions("121","11",'/'));
+		assertEquals("0.10",csertest.calculatorFunctions("12","123",'/'));
+		assertEquals("0.00",csertest.calculatorFunctions("12","2",'^'));
 	}
 }

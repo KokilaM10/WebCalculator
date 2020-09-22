@@ -26,6 +26,7 @@ public class ApplicationConstants {
 	public static final char SUBTRACT = '-';
 	public static final char MULTIPLY = '*';
 	public static final char DIVIDE = '/';
+	public static final String HUNDREDTH_PLACE = "%.2f";
 	
 	public static final String FORWARDED_URL = "/WEB-INF/jsp/home.jsp";
 	

@@ -60,7 +60,7 @@ public class WebCalculatorService {
     			break;
     		default:
     	}
-        return Double.toString(res);
+        return String.format(ApplicationConstants.HUNDREDTH_PLACE, res);
     }
 
 }

@@ -82,7 +82,7 @@ class WebCalculatorControllerTest {
                     .andExpect(view().name(ApplicationConstants.HOME))
                     .andExpect(forwardedUrl(ApplicationConstants.FORWARDED_URL))
                     .andExpect(model().attributeExists(ApplicationConstants.RESULT))
-                    .andExpect(model().attribute(ApplicationConstants.RESULT,"300.0"))
+                    .andExpect(model().attribute(ApplicationConstants.RESULT,"300.00"))
                     .andExpect(model().attribute(ApplicationConstants.ERROR_MESSAGE,""))
                     .andDo(MockMvcResultHandlers.print());
 	}
